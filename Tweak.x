@@ -138,7 +138,7 @@ static NSString *QLPStringFromObject(id object, NSArray<NSString *> *keys) {
                                         QLPPrefsChangedCallback,
                                         (CFStringRef)kQLPPrefsChanged,
                                         NULL,
-                                        CFNotificationCenterSuspensionBehaviorCoalesce);
+                                        CFNotificationSuspensionBehaviorCoalesce);
 
         // 打开 QQ 时清理已推送通知
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidBecomeActiveNotification
