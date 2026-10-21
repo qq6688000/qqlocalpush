@@ -6,7 +6,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = QQLocalPush
 
-QQLocalPush_FILES = Tweak.xm
+QQLocalPush_FILES = Tweak.x
 QQLocalPush_FRAMEWORKS = UserNotifications UIKit
 QQLocalPush_CFLAGS = -fobjc-arc -Wno-unguarded-availability-new -Wno-deprecated-declarations
 

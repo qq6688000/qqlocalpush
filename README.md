@@ -10,7 +10,7 @@
 
 | 文件 | 作用 |
 |---|---|
-| `Tweak.xm` | 插件源码（本地通知逻辑 + 设置 + 去重 + hook） |
+| `Tweak.x` | 插件源码（本地通知逻辑 + 设置 + 去重 + hook） |
 | `Makefile` | Theos 构建脚本 |
 | `control` | deb 包信息 |
 | `QQLocalPush.plist` | Substrate/Substitute 注入过滤（只注入 com.tencent.mqq） |
