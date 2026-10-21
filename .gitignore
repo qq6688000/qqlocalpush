@@ -1,0 +1,7 @@
+qlp-artifact/
+qlp-dl/
+*.deb
+.theos/
+obj/
+packages/
+.DS_Store
