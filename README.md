@@ -65,7 +65,7 @@ uicache -p /Applications/QQ.app   # 可选，刷新图标缓存
     <key>OnlyOthers</key>     <true/>   <!-- 只推送别人的消息 -->
     <key>Sound</key>          <true/>   <!-- 播放提示音 -->
     <key>ClearOnOpen</key>    <true/>   <!-- 打开 QQ 时清理已弹通知 -->
-    <key>GenericFallback</key><false/>  <!-- 通用回退 hook，默认关 -->
+    <key>GenericFallback</key><true/>   <!-- 通用回退 hook，默认开 -->
 </dict>
 </plist>
 ```
@@ -87,8 +87,8 @@ uicache -p /Applications/QQ.app   # 可选，刷新图标缓存
   填入 `Tweak.xm` 中标注的位置（QQ 用 NT 架构，消息类是
   `AIOChatServiceModule.NTAIOChatMessageService` / `ChatRecord.NTChatRecordMessageModel`，
   需枚举其方法确认"收到消息"的入口签名）
-- ✅ 方案 B 通用回退：`postNotification:` + 消息名过滤，已内置，默认关闭，
-  可在设置里开 `GenericFallback` 应急
+- ✅ 方案 B 通用回退：`postNotification:` + 消息名过滤，已内置，默认开启，
+  可在设置里关 `GenericFallback`（若噪音过大）
 
 ## 调试
 

@@ -13,7 +13,7 @@
 //   OnlyOthers     只推送别人的消息   （默认 YES）
 //   Sound          播放提示音         （默认 YES）
 //   ClearOnOpen    打开 QQ 时清理已弹出的通知（默认 YES）
-//   GenericFallback 启用通用回退 hook  （默认 NO，见文件末尾方案 B）
+//   GenericFallback 启用通用回退 hook  （默认 YES，见文件末尾方案 B）
 
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
@@ -31,7 +31,7 @@ static BOOL gQLPShowContent = YES;
 static BOOL gQLPOnlyOthers = YES;
 static BOOL gQLPSound = YES;
 static BOOL gQLPClearOnOpen = YES;
-static BOOL gQLPGenericFallback = NO;
+static BOOL gQLPGenericFallback = YES;
 
 static NSMutableSet *QLPRecentIDs(void) {
     static NSMutableSet *ids = nil;

@@ -15,8 +15,31 @@ if [ -d "$TI" ] && [ -f "$DYLIB" ] && [ ! -e "$TI/QQLocalPush.dylib" ]; then
     ln -sf "$PLIST" "$TI/QQLocalPush.plist" 2>/dev/null || true
 fi
 
+# Write default preferences (all features enabled) only if no existing config,
+# so the user's later edits are never overwritten on reinstall.
+PREFS="/var/mobile/Library/Preferences/com.qq.localpush.plist"
+if [ ! -f "$PREFS" ]; then
+    mkdir -p "$(dirname "$PREFS")"
+    cat > "$PREFS" <<'PLISTEOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Enabled</key><true/>
+    <key>FrontBanner</key><true/>
+    <key>ShowContent</key><true/>
+    <key>OnlyOthers</key><true/>
+    <key>Sound</key><true/>
+    <key>ClearOnOpen</key><true/>
+    <key>GenericFallback</key><true/>
+</dict>
+</plist>
+PLISTEOF
+    chown mobile:mobile "$PREFS" 2>/dev/null || true
+fi
+
 killall QQ 2>/dev/null || true
 
-echo "QQLocalPush installed. Reopen QQ to activate."
+echo "QQLocalPush installed (all features enabled by default)."
 echo "Ensure: Settings -> Notifications -> QQ -> Allow Notifications is ON."
 exit 0
