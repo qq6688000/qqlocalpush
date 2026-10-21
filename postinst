@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+JB=/var/jb
+[ -d "$JB" ] || JB=""
+
+DYLIB="$JB/Library/MobileSubstrate/DynamicLibraries/QQLocalPush.dylib"
+PLIST="$JB/Library/MobileSubstrate/DynamicLibraries/QQLocalPush.plist"
+TI="$JB/usr/lib/TweakInject"
+
+chmod 755 "$DYLIB" 2>/dev/null || true
+
+if [ -d "$TI" ] && [ -f "$DYLIB" ] && [ ! -e "$TI/QQLocalPush.dylib" ]; then
+    ln -sf "$DYLIB" "$TI/QQLocalPush.dylib" 2>/dev/null || true
+    ln -sf "$PLIST" "$TI/QQLocalPush.plist" 2>/dev/null || true
+fi
+
+killall QQ 2>/dev/null || true
+
+echo "QQLocalPush installed. Reopen QQ to activate."
+echo "Ensure: Settings -> Notifications -> QQ -> Allow Notifications is ON."
+exit 0
